@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "头文件撰写与类内包含类", "头文件撰写与类内包含类\头文件撰写与类内包含类.vcxproj", "{0B4DD76A-9DCB-4695-A221-6BE4F11B4CE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B4DD76A-9DCB-4695-A221-6BE4F11B4CE4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0B4DD76A-9DCB-4695-A221-6BE4F11B4CE4}.Debug|Win32.Build.0 = Debug|Win32
+		{0B4DD76A-9DCB-4695-A221-6BE4F11B4CE4}.Release|Win32.ActiveCfg = Release|Win32
+		{0B4DD76A-9DCB-4695-A221-6BE4F11B4CE4}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
