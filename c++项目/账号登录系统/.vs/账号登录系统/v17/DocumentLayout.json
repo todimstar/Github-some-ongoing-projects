@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\some-ongoing-projects-master\\c\u002B\u002B\u9879\u76EE\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\",
+  "WorkspaceRootPath": "E:\\Dev-Cpp_6.3\\Test Project\\GithubLoacl\\Github-some-ongoing-projects\\c\u002B\u002B\u9879\u76EE\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FB6EE724-0204-4C72-B146-0EF04FA4A475}|\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF.vcxproj|E:\\some-ongoing-projects-master\\c\u002B\u002B\u9879\u76EE\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{FB6EE724-0204-4C72-B146-0EF04FA4A475}|\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF.vcxproj|E:\\Dev-Cpp_6.3\\Test Project\\GithubLoacl\\Github-some-ongoing-projects\\c\u002B\u002B\u9879\u76EE\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FB6EE724-0204-4C72-B146-0EF04FA4A475}|\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF.vcxproj|solutionrelative:\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "E:\\some-ongoing-projects-master\\c\u002B\u002B\u9879\u76EE\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\main.cpp",
+              "DocumentMoniker": "E:\\Dev-Cpp_6.3\\Test Project\\GithubLoacl\\Github-some-ongoing-projects\\c\u002B\u002B\u9879\u76EE\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\main.cpp",
               "RelativeDocumentMoniker": "\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\main.cpp",
-              "ToolTip": "E:\\some-ongoing-projects-master\\c\u002B\u002B\u9879\u76EE\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\main.cpp",
+              "ToolTip": "E:\\Dev-Cpp_6.3\\Test Project\\GithubLoacl\\Github-some-ongoing-projects\\c\u002B\u002B\u9879\u76EE\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\main.cpp",
               "RelativeToolTip": "\u8D26\u53F7\u767B\u5F55\u7CFB\u7EDF\\main.cpp",
-              "ViewState": "AQIAAEYAAAAAAAAAAAAAAE0AAAAAAAAA",
+              "ViewState": "AQIAANUAAAAAAAAAAAAAAOAAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-29T16:08:15.451Z",
               "EditorCaption": ""
