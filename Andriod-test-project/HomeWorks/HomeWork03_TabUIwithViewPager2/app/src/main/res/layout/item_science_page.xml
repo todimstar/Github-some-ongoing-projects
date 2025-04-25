@@ -9,7 +9,7 @@
         android:id="@+id/science_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:contentDescription="@string/science_image_description" /> <!-- 记得在 strings.xml 添加描述 -->
 
     <TextView

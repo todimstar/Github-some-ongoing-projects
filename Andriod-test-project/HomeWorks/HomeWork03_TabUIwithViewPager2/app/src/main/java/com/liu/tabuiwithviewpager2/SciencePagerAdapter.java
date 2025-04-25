@@ -19,7 +19,7 @@ public class SciencePagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         ScienceContent content = contentList.get(position);
-        return SciencePageFragment.newInstance(content.getImageResId(), content.getTitle(), content.getDescription());
+        return SciencePageFragment.newInstance(content.getImageResId(), content.getTitle(), content.getDescriptionResId());
     }
 
     @Override

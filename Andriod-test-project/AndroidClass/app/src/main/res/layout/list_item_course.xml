@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 相对布局容器，允许子元素相对于父容器或其他子元素定位 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+    <!-- 👆 宽度填满父容器，高度自适应内容，内边距 -->
+
+    <!-- 课程图片 -->
+    <ImageView
+        android:id="@+id/imageViewCourse"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@android:drawable/ic_menu_agenda"
+        android:scaleType="centerCrop"
+        android:contentDescription="课程图片" />
+    <!-- 👆 图片视图ID，固定宽高，靠左对齐，垂直居中，默认图片资源，缩放类型，无障碍描述 -->
+
+    <!-- 课程名称 -->
+    <TextView
+        android:id="@+id/textViewCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/imageViewCourse"
+        android:layout_toStartOf="@id/checkBox"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:text="课程名称" />
+    <!-- 👆 文本视图ID，宽度填满剩余空间，位于图片右侧和复选框左侧，左边距，文本大小，默认文本 -->
+
+    <!-- 课程描述 -->
+    <TextView
+        android:id="@+id/textViewCourseDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewCourseName"
+        android:layout_toEndOf="@id/imageViewCourse"
+        android:layout_toStartOf="@id/checkBox"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:text="课程描述" />
+    <!-- 👆 文本视图ID，位于课程名称下方，位于图片右侧和复选框左侧，左边距，上边距，文本大小，默认文本 -->
+
+    <!-- 选择复选框 -->
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true" />
+    <!-- 👆 复选框ID，靠右对齐，靠底对齐 -->
+</RelativeLayout>

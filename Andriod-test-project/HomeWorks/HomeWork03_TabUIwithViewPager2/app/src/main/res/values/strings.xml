@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">TabUIwithViewPager2</string>
     <string name="science_image_description">科学科普图片</string>
+    <string name="main_title_text">Java 开发学习路线科普</string> <!-- 新增主标题文本 -->
+
+    <!-- Java 学习路线描述 -->
+    <string name="java_basics_desc">学习 Java 语法、数据类型（如 int、double、boolean）、控制流（if-else、switch、for、while）以及数组和基本输入输出（如 Scanner 和 System.out）。这是编程的基石。例如，通过条件判断（if-else）实现年龄验证，用循环（for）遍历学生信息数组。推荐书籍《Java核心技术卷I》包含大量基础案例，适合边学边练。</string>
+    <string name="oop_desc">理解类、对象、封装（通过 private 属性和 getter/setter 方法）、继承（如 Dog 继承 Animal 类）、多态（不同子类实现同一方法，如 Dog 的 sound() 返回“汪汪”）。掌握抽象类（定义未实现的方法）和接口（如 Runnable）的使用，提升代码复用性和灵活性。例如，动物园系统通过多态展示不同动物的行为。</string>
+    <string name="java_core_lib_desc">熟悉 Java 核心 API：集合框架（ArrayList、HashSet、HashMap）、异常处理（try-catch-finally）、IO/NIO（文件读写）、多线程（Thread 和 Runnable 实现并发任务）、Socket 网络编程（如聊天程序），以及反射（动态获取类信息）。例如，使用 ConcurrentHashMap 实现线程安全的计数器，通过 JDBC 连接数据库查询数据。</string>
+    <string name="database_basics_desc">学习 SQL 语言（SELECT、INSERT、JOIN、GROUP BY），了解关系型数据库（如 MySQL、PostgreSQL）的事务和索引。掌握 JDBC（DriverManager 连接数据库，执行 SQL 语句），并了解 ORM 框架（如 MyBatis）简化数据操作。例如，学生管理系统可通过 JDBC 与数据库交互，实现增删改查功能。</string>
+    <string name="web_basics_desc">若目标是 Web 开发，需学习 HTML（构建页面结构）、CSS（样式设计，如颜色和字体）、JavaScript（动态交互，如表单验证）。了解 HTTP 协议（GET/POST 请求、状态码 200/404），并实践前端与后端的交互。例如，在线书店系统通过 HTML 渲染页面，通过 JavaScript 发送 AJAX 请求获取商品数据。</string>
+    <string name="servlet_jsp_desc">学习 Java Web 核心技术：Servlet（处理 HTTP 请求，如 doGet/doPost 方法）、JSP（嵌入 Java 代码生成动态页面，如 &lt;%@ user.getName() %&gt;）。了解 Tomcat 容器部署应用，管理 Servlet 生命周期。例如，用户登录功能通过 Servlet 验证凭证，JSP 渲染登录页面，Tomcat 处理请求分发。</string>
+    <string name="frameworks_desc">掌握 Spring 生态：Spring Core（IoC 容器和 @Autowired 依赖注入）、Spring MVC（构建 RESTful API）、Spring Boot（简化配置，@SpringBootApplication 快速启动应用）、Spring Cloud（微服务架构，如 @EnableEurekaServer 注册中心）。MyBatis/JPA（ORM 持久化，如 MyBatis 的 @Select 注解映射 SQL）。例如，在线书店可扩展为 Spring Boot 微服务，通过 FeignClient 调用商品服务。</string>
+    <string name="build_tools_vcs_desc">使用 Maven/Gradle 管理依赖（如在 pom.xml 中声明 spring-boot-starter-web），执行构建流程（mvn compile/package）。通过 Git 进行版本控制（git add/commit/push），配合分支策略（如 GitFlow）协作开发。例如，团队协作时通过 Git 分支开发新功能，并合并到主分支。</string>
+    <!-- 你可以继续添加 -->
 </resources>

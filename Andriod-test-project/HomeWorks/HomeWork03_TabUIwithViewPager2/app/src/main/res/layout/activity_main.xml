@@ -7,22 +7,38 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- 可选: 添加 TabLayout -->
+    <!-- 新增主标题 TextView -->
+    <TextView
+        android:id="@+id/main_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:text="科普主标题" /> <!-- tools:text 用于预览 -->
+    <!-- 使用 MaterialComponents 样式 -->
+
+    <!-- TabLayout 现在约束到主标题下方 -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:tabMode="scrollable"
+        app:layout_constraintTop_toBottomOf="@id/main_title" /> <!-- 约束到 main_title 下方 -->
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout" 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-        <!-- 如果有 TabLayout -->
-        <!-- app:layout_constraintTop_toTopOf="parent" 如果没有 TabLayout -->
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+    <!-- 保持在 TabLayout 下方 -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
