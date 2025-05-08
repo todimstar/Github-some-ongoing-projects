@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
         scienceContentList = new ArrayList<>();
         // 使用字符串资源 ID
         // 将 placeholder_image 替换为相应的图片资源
-        scienceContentList.add(new ScienceContent(R.drawable.java_basics, "Java 基础", R.string.java_basics_desc));
-        scienceContentList.add(new ScienceContent(R.drawable.oop, "面向对象 (OOP)", R.string.oop_desc));
-        scienceContentList.add(new ScienceContent(R.drawable.javacore, "Java 核心库", R.string.java_core_lib_desc));
-        scienceContentList.add(new ScienceContent(R.drawable.sjk, "数据库基础", R.string.database_basics_desc));
-        scienceContentList.add(new ScienceContent(R.drawable.web, "Web 基础", R.string.web_basics_desc));
-        scienceContentList.add(new ScienceContent(R.drawable.servlet_jsp, "Servlet & JSP", R.string.servlet_jsp_desc));
-        scienceContentList.add(new ScienceContent(R.drawable.frameworks, "常用框架", R.string.frameworks_desc));
-        scienceContentList.add(new ScienceContent(R.drawable.build_tools, "构建工具 & VCS", R.string.build_tools_vcs_desc));
+        scienceContentList.add(new ScienceContent(R.drawable.tanglangxia, "孔雀螳螂虾", R.string.java_basics_desc));
+        scienceContentList.add(new ScienceContent(R.drawable.h, "宽吻海豚", R.string.oop_desc));
+        scienceContentList.add(new ScienceContent(R.drawable.haidan, "岩纹海胆", R.string.java_core_lib_desc));
+        scienceContentList.add(new ScienceContent(R.drawable.jiazhou, "加州海狮", R.string.database_basics_desc));
+        scienceContentList.add(new ScienceContent(R.drawable.shayu, "灰色礁鲨", R.string.web_basics_desc));
+        scienceContentList.add(new ScienceContent(R.drawable.hongyu, "魟鱼", R.string.servlet_jsp_desc));
+        scienceContentList.add(new ScienceContent(R.drawable.changmao, "长毛鱼", R.string.frameworks_desc));
+        scienceContentList.add(new ScienceContent(R.drawable.xiaochou, "小丑鱼", R.string.build_tools_vcs_desc));
 //        scienceContentList.add(new ScienceContent(android.R.drawable.ic_dialog_info, "Java 基础", R.string.java_basics_desc));
 //        scienceContentList.add(new ScienceContent(android.R.drawable.ic_menu_sort_by_size, "面向对象 (OOP)", R.string.oop_desc));
 //        scienceContentList.add(new ScienceContent(android.R.drawable.ic_menu_manage, "Java 核心库", R.string.java_core_lib_desc));
