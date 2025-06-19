@@ -69,19 +69,19 @@ public class ChatFragment extends Fragment {
 
     private void loadChatItems() {
         // 添加示例聊天数据
-        chatItemList.add(new ChatItem(R.drawable.placeholder_image_1, "文件传输助手", "好的，文件已收到。", "昨天"));
-        chatItemList.add(new ChatItem(R.drawable.placeholder_image_2, "微信团队", "[应用通知] 欢迎使用微信！", "星期一"));
-        chatItemList.add(new ChatItem(R.drawable.placeholder_image_1, "张三", "在吗？晚上一起吃饭？", "15:30"));
-        chatItemList.add(new ChatItem(R.drawable.placeholder_image_2, "李四", "哈哈，太有趣了！", "14:05"));
-        chatItemList.add(new ChatItem(R.drawable.placeholder_image_1, "王五", "[语音]", "13:12"));
-        chatItemList.add(new ChatItem(R.drawable.placeholder_image_2, "赵六", "图片已发送，请查收。", "10:55"));
-        chatItemList.add(new ChatItem(R.drawable.placeholder_image_1, "家庭群(5)", "小明：@所有人 周末聚餐通知", "09:20"));
+        chatItemList.add(new ChatItem(android.R.drawable.alert_dark_frame, "文件传输", "ok，文件已收到。", "星期天"));
+        chatItemList.add(new ChatItem(android.R.drawable.alert_light_frame, "微信团队", "[应用通知] 欢迎使用微信！", "星期一"));
+        chatItemList.add(new ChatItem(R.drawable.placeholder_image_1, "乔一", "早起一起锻炼吗？", "8:30"));
+        chatItemList.add(new ChatItem(R.drawable.placeholder_image_2, "陈二", "我吃到一个惊天大瓜！", "11:00"));
+        chatItemList.add(new ChatItem(R.drawable.placeholder_image_1, "张三", "今天没带头盔又被抓了", "13:00"));
+        chatItemList.add(new ChatItem(R.drawable.placeholder_image_2, "李四", "今天又逮到一个不戴头盔骑电动车的", "13：01"));
+        chatItemList.add(new ChatItem(R.drawable.placeholder_image_1, "钱五", "今天整个猫队聚一聚吃一顿呗", "15:00"));
 
         for (int i = 1; i <= 10; i++) {
              chatItemList.add(new ChatItem(
-                i % 2 == 0 ? R.drawable.placeholder_image_2 : R.drawable.placeholder_image_1,
+                i % 2 == 0 ? android.R.drawable.alert_light_frame : android.R.drawable.alert_dark_frame,
                 "好友 " + i,
-                "这是一条测试消息 " + i,
+                "你好，初次見面",
                 "10:" + String.format("%02d", i*2)
         ));
         }

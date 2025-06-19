@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".AddEditMemoActivity">
+
+    <TextView
+        android:id="@+id/textViewAddEditTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加/编辑备忘录"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"/>
+
+    <EditText
+        android:id="@+id/editTextMemoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="备忘录标题"
+        android:inputType="textCapSentences"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextMemoContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="备忘录内容"
+        android:inputType="textMultiLine|textCapSentences"
+        android:gravity="top"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/buttonSaveMemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存"/>
+
+</LinearLayout>

@@ -16,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button buttonLogin;
 
     // 预设的用户名和密码
-    private static final String CORRECT_USERNAME = "admin";
+    private static final String CORRECT_USERNAME = "zzz";
     private static final String CORRECT_PASSWORD = "123";
 
     @Override
