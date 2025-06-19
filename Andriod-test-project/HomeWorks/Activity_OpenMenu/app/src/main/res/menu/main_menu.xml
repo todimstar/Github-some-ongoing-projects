@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_switch_content1"
+        android:title="@string/menu_item_switch_content1"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_switch_content2"
+        android:title="@string/menu_item_switch_content2"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_open_new_page"
+        android:title="@string/menu_item_open_new_page"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_open_camera"
+        android:title="@string/menu_item_open_camera"
+        app:showAsAction="never" />
+</menu>
