@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 字体大小 (Font Sizes) -->
+    <dimen name="text_title_large">28sp</dimen>
+    <dimen name="text_title">24sp</dimen>
+    <dimen name="text_subtitle">20sp</dimen>
+    <dimen name="text_headline">18sp</dimen>
+    <dimen name="text_body">16sp</dimen>
+    <dimen name="text_body_small">14sp</dimen>
+    <dimen name="text_caption">12sp</dimen>
+    <dimen name="text_overline">10sp</dimen>
+    
+    <!-- 间距规范 (Spacing) -->
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+    <dimen name="margin_xxlarge">48dp</dimen>
+    
+    <!-- 内边距 (Padding) -->
+    <dimen name="padding_tiny">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    <dimen name="padding_xlarge">32dp</dimen>
+    
+    <!-- 圆角规范 (Corner Radius) -->
+    <dimen name="radius_tiny">2dp</dimen>
+    <dimen name="radius_small">4dp</dimen>
+    <dimen name="radius_medium">8dp</dimen>
+    <dimen name="radius_large">16dp</dimen>
+    <dimen name="radius_xlarge">24dp</dimen>
+    <dimen name="radius_round">50dp</dimen>
+    
+    <!-- 高度规范 (Height) -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_height_small">36dp</dimen>
+    <dimen name="input_height">56dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="card_height_small">120dp</dimen>
+    <dimen name="card_height_medium">160dp</dimen>
+    <dimen name="card_height_large">200dp</dimen>
+    
+    <!-- 宽度规范 (Width) -->
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+    <dimen name="icon_size_small">16dp</dimen>
+    <dimen name="icon_size_medium">24dp</dimen>
+    <dimen name="icon_size_large">32dp</dimen>
+    <dimen name="icon_size_xlarge">48dp</dimen>
+    
+    <!-- 阴影和高度 (Elevation) -->
+    <dimen name="elevation_card">4dp</dimen>
+    <dimen name="elevation_fab">6dp</dimen>
+    <dimen name="elevation_dialog">8dp</dimen>
+    <dimen name="elevation_navigation">16dp</dimen>
+</resources>

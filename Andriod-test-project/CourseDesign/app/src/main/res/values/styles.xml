@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 基础应用主题 (Base App Theme) -->
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorPrimaryVariant">@color/primary_blue_dark</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorSecondary">@color/secondary_green</item>
+        <item name="colorSecondaryVariant">@color/secondary_green_dark</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="colorSurface">@color/surface_color</item>
+        <item name="colorError">@color/error_color</item>
+        <item name="android:statusBarColor">@color/primary_blue_dark</item>
+        <item name="android:navigationBarColor">@color/background_light</item>
+    </style>
+
+    <!-- 管理员主题 (Admin Theme) -->
+    <style name="AppTheme.Admin" parent="AppTheme">
+        <item name="colorPrimary">@color/admin_purple</item>
+        <item name="colorPrimaryVariant">@color/admin_purple_dark</item>
+        <item name="android:statusBarColor">@color/admin_purple_dark</item>
+    </style>
+
+    <!-- 卡片样式 (Card Styles) -->
+    <style name="CardStyle" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/radius_medium</item>
+        <item name="cardElevation">@dimen/elevation_card</item>
+        <item name="android:layout_margin">@dimen/margin_small</item>
+    </style>
+
+    <!-- 按钮样式 (Button Styles) -->
+    <style name="ButtonStyle.Primary" parent="Widget.Material3.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="backgroundTint">@color/primary_blue</item>
+        <item name="cornerRadius">@dimen/radius_medium</item>
+    </style>
+
+    <style name="ButtonStyle.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@color/primary_blue</item>
+        <item name="strokeColor">@color/primary_blue</item>
+        <item name="cornerRadius">@dimen/radius_medium</item>
+    </style>
+
+    <!-- 文本样式 (Text Styles) -->
+    <style name="TextStyle.Title" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextStyle.Subtitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="TextStyle.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <!-- 输入框样式 (Input Styles) -->
+    <style name="InputStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/primary_blue</item>
+        <item name="hintTextColor">@color/primary_blue</item>
+        <item name="android:layout_marginBottom">@dimen/margin_medium</item>
+    </style>
+
+</resources>

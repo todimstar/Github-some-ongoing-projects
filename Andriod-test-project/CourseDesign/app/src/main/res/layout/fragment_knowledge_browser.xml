@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <!-- 顶部应用栏 (Top App Bar) -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_gradient"
+            app:title="知识浏览"
+            app:titleTextColor="@android:color/white"
+            app:navigationIcon="@drawable/ic_arrow_back" />
+
+        <!-- 分类标签栏 (Category Tab Layout) -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            app:tabMode="scrollable"
+            app:tabGravity="start"
+            app:tabIndicatorColor="@color/primary_blue"
+            app:tabSelectedTextColor="@color/primary_blue"
+            app:tabTextColor="@color/text_secondary"
+            app:tabRippleColor="@color/primary_blue" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- 知识内容区域 (Knowledge Content Area) -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerKnowledge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <!-- 底部控制栏 (Bottom Control Bar) -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/margin_medium"
+        app:cardCornerRadius="@dimen/radius_large"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_medium"
+            android:gravity="center_vertical">
+
+            <!-- 上一页按钮 (Previous Button) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPrevious"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="上一页"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_chevron_left"
+                app:iconGravity="start"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                app:strokeColor="@color/primary_blue"
+                android:textColor="@color/primary_blue" />
+
+            <!-- 页码指示器 (Page Indicator) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvPageIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 / 10"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progressIndicator"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:indicatorColor="@color/primary_blue"
+                    app:trackColor="@color/divider_color"
+                    app:trackCornerRadius="2dp" />
+
+            </LinearLayout>
+
+            <!-- 下一页按钮 (Next Button) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="下一页"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_chevron_right"
+                app:iconGravity="end"
+                style="@style/Widget.Material3.Button"
+                android:backgroundTint="@color/primary_blue"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 搜索浮动按钮 (Search FAB) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:src="@drawable/ic_search"
+        app:backgroundTint="@color/secondary_green"
+        app:tint="@android:color/white"
+        android:contentDescription="搜索知识" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
