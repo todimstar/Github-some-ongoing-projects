@@ -1,0 +1,94 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- 缩略图 -->
+        <ImageView
+            android:id="@+id/iv_concept_thumbnail"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/placeholder_image"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_image_background" />
+
+        <!-- 概念信息 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/tv_concept_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变量与数据类型"
+                android:textColor="@color/dark_gray"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_concept_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="已发布"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_concept_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="基础语法"
+                android:textColor="@color/gray"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- 操作按钮 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="60dp"
+                android:layout_height="32dp"
+                android:text="编辑"
+                android:textSize="12sp"
+                android:background="@drawable/button_blue_small"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="60dp"
+                android:layout_height="32dp"
+                android:text="删除"
+                android:textSize="12sp"
+                android:background="@drawable/button_red_small"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

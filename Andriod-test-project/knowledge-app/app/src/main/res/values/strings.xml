@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">编程知识科普</string>
+    
+    <!-- 登录注册 -->
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="email">邮箱</string>
+    <string name="confirm_password">确认密码</string>
+    
+    <!-- 主界面 -->
+    <string name="home">首页</string>
+    <string name="previous">上一页</string>
+    <string name="next">下一页</string>
+    <string name="page_indicator">%1$d / %2$d</string>
+    
+    <!-- 管理界面 -->
+    <string name="manage_content">内容管理</string>
+    <string name="add_content">添加内容</string>
+    <string name="edit_content">编辑内容</string>
+    <string name="delete_content">删除内容</string>
+    <string name="search_hint">搜索内容...</string>
+    
+    <!-- 设置 -->
+    <string name="settings">设置</string>
+    <string name="change_password">修改密码</string>
+    <string name="current_password">当前密码</string>
+    <string name="new_password">新密码</string>
+    <string name="logout">退出登录</string>
+    
+    <!-- 通用 -->
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="title">标题</string>
+    <string name="description">描述</string>
+    <string name="category">分类</string>
+    
+    <!-- 用户类型 -->
+    <string name="admin_user">管理员</string>
+    <string name="normal_user">普通用户</string>
+    
+    <!-- 提示信息 -->
+    <string name="login_success">登录成功</string>
+    <string name="login_failed">登录失败，请检查用户名和密码</string>
+    <string name="register_success">注册成功</string>
+    <string name="password_changed">密码修改成功</string>
+    <string name="content_saved">内容保存成功</string>
+    <string name="content_deleted">内容删除成功</string>
+</resources>

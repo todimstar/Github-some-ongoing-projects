@@ -1,0 +1,57 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="@android:color/white">
+
+        <!-- 概念标题 -->
+        <TextView
+            android:id="@+id/tv_concept_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="什么是Java"
+            android:textColor="@color/dark_gray"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <!-- 状态图标 -->
+        <ImageView
+            android:id="@+id/iv_status"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_unlock"
+            android:background="@drawable/circle_background_small_blue"
+            android:padding="6dp"
+            android:tint="@android:color/white" />
+
+        <!-- 锁定状态的灰色图标 (当未解锁时显示) -->
+        <ImageView
+            android:id="@+id/iv_lock_status"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_lock"
+            android:background="@drawable/circle_background_small_gray"
+            android:padding="6dp"
+            android:tint="@color/light_gray_text"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

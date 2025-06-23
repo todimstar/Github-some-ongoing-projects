@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.liu.memo.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;

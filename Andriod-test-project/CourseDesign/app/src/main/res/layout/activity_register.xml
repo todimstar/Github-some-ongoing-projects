@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:gravity="center">
+
+    <!-- 注册标题 (Registration Title) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户注册"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="48dp"
+        android:textColor="@android:color/black" />
+
+    <!-- 用户名输入框 (Username Input Field) -->
+    <EditText
+        android:id="@+id/editTextRegUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入用户名（至少3个字符）"
+        android:inputType="text"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp" />
+
+    <!-- 密码输入框 (Password Input Field) -->
+    <EditText
+        android:id="@+id/editTextRegPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码（至少6个字符）"
+        android:inputType="textPassword"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp" />
+
+    <!-- 确认密码输入框 (Confirm Password Input Field) -->
+    <EditText
+        android:id="@+id/editTextConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请再次输入密码"
+        android:inputType="textPassword"
+        android:layout_marginBottom="24dp"
+        android:padding="12dp" />
+
+    <!-- 注册按钮 (Register Button) -->
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:backgroundTint="#4CAF50" />
+
+    <!-- 返回登录按钮 (Back to Login Button) -->
+    <Button
+        android:id="@+id/buttonBackToLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="返回登录"
+        android:padding="12dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="#287193" />
+
+</LinearLayout>
