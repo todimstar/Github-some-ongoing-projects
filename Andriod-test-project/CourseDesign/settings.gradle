@@ -1,21 +1,30 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    // ✅ 修改：改为PREFER_SETTINGS模式，允许项目级仓库作为后备
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
+        // Google官方仓库 - Google Official Repository
         google()
+        
+        // Maven中央仓库 - Maven Central Repository  
         mavenCentral()
+        
+        // ✅ JitPack仓库 - 用于GitHub上的库 (JitPack Repository - For GitHub Libraries)
+        // JitPack = Just (刚好) + It (它) + Pack (打包) = 即时打包仓库
+        maven { url 'https://jitpack.io' }
+        // ✅ 添加阿里云镜像加速 (Add Aliyun Mirror for Speed)
+        // 如果网络慢可以使用国内镜像
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        
+        // ✅ Gradle插件仓库 (Gradle Plugin Repository)
+        gradlePluginPortal()
     }
 }
 

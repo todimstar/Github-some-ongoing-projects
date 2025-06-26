@@ -14,7 +14,10 @@ import java.util.List;
 @Dao
 public interface UserDao {
     @Insert
-    void insertAll(User... users);// insert注解方法返回值只能void或long,long[],List<Long>
+    long insertAll(User user);// insert注解方法返回值只能void或long,long[],List<Long>
+
+    @Insert
+    long[] insertAll(User... users);
 
     @Delete
     int deleteAll(User[] users);// 返回值只能void或int(影响的行数)
@@ -43,5 +46,38 @@ public interface UserDao {
     @Query("SELECT COUNT(*) FROM users WHERE username = :username")
     int checkUsernameExists(String username);
 
+    /**
+     * 获取用户总数
+     * Get Total User Count
+     * 
+     * @return 用户总数 (Total number of users)
+     * 
+     * SQL解释：
+     * - SELECT COUNT(*) = 选择计数所有记录 (Select count of all records)
+     * - FROM users = 从users表 (From users table)
+     */
+    @Query("SELECT COUNT(*) FROM users")
+    int getUserCount();
+
+
+    /**
+     * 更新用户密码
+     * Update User Password
+     * 
+     * 原理解释：
+     * - @Query注解用于自定义SQL查询 (Custom SQL query annotation)
+     * - UPDATE = 更新操作 (Update operation)
+     * - SET = 设置字段值 (Set field value)
+     * - WHERE = 条件筛选 (Condition filtering)
+     * - :userId和:newPassword是参数占位符 (Parameter placeholders)
+     * 
+     * 方法参数说明：
+     * - userId: 用户ID，用于定位要更新的用户记录
+     * - newPassword: 新密码字符串
+     * 
+     * 返回值：影响的行数，通常为1表示成功更新一条记录
+     */
+    @Query("UPDATE users SET password = :newPassword WHERE id = :userId")
+    int updatePassword(int userId, String newPassword);
 
 }

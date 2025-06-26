@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintHeight_percent="0.35"
             android:contentDescription="知识配图" />
 
         <!-- 渐变遮罩 (Gradient Overlay) -->
@@ -52,6 +52,7 @@
 
         <!-- 内容区域 (Content Area) -->
         <LinearLayout
+            android:id="@+id/contentLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -67,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="面向对象编程基础"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary"
                 android:gravity="center"
@@ -81,23 +82,24 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:scrollbars="vertical"
-                android:fadeScrollbars="true">
+                android:fadeScrollbars="true"
+                android:fillViewport="true">
 
                 <TextView
                     android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="面向对象编程（Object-Oriented Programming，OOP）是一种编程范式，它使用对象来设计应用程序和计算机程序。这种编程方法基于几个核心概念：封装、继承、多态和抽象。通过这些概念，开发者可以创建更加模块化、可重用和易于维护的代码..."
-                    android:textSize="16sp"
+                    android:text="面向对象编程（Object-Oriented Programming，OOP）是一种编程范式，它使用对象来设计应用程序和计算机程序。这种编程方法基于几个核心概念：封装、继承、多态和抽象。通过这些概念，开发者可以创建更加模块化、可重用和易于维护的代码。\n\n封装是将数据和操作数据的方法组合在一起的过程，隐藏内部实现细节。继承允许新类基于现有类创建，继承其属性和方法。多态使得同一个接口可以用于不同的底层形式。抽象则是隐藏复杂实现细节，只暴露必要的功能。"
+                    android:textSize="15sp"
                     android:textColor="@color/text_primary"
-                    android:lineSpacingExtra="4dp"
+                    android:lineSpacingExtra="3dp"
                     android:justificationMode="inter_word" />
 
             </androidx.core.widget.NestedScrollView>
 
         </LinearLayout>
 
-        <!-- 底部信息栏 (Footer Information) -->
+        <!-- 底部信息栏 (Footer Information) - 确保有足够空间显示 -->
         <LinearLayout
             android:id="@+id/layoutFooter"
             android:layout_width="0dp"
@@ -106,53 +108,113 @@
             android:padding="@dimen/margin_large"
             android:gravity="center_vertical"
             android:background="@drawable/footer_background"
+            android:minHeight="72dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <!-- 更新时间 (Update Time) -->
+            <!-- 左侧信息区域 (Left Info Area) -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                android:gravity="start|center_vertical">
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ic_clock"
-                    android:layout_marginEnd="4dp"
-                    android:contentDescription="更新时间" />
-
-                <TextView
-                    android:id="@+id/tvUpdateTime"
+                <!-- 更新时间 (Update Time) -->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2024-01-15"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_secondary" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_clock"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="更新时间" />
+
+                    <TextView
+                        android:id="@+id/tvUpdateTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2024-01-15"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary" />
+
+                </LinearLayout>
+
+                <!-- 阅读时长 (Reading Time) -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="4dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_timer"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="阅读时长" />
+
+                    <TextView
+                        android:id="@+id/tvReadingTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="约5分钟"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <!-- 收藏按钮 (Favorite Button) -->
-            <ImageButton
-                android:id="@+id/btnFavorite"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_favorite_border"
-                android:background="@drawable/button_circle_transparent"
-                android:contentDescription="收藏" />
+            <!-- 右侧操作按钮区域 (Right Action Area) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-            <!-- 分享按钮 (Share Button) -->
-            <ImageButton
-                android:id="@+id/btnShare"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_share"
-                android:background="@drawable/button_circle_transparent"
-                android:layout_marginStart="8dp"
-                android:contentDescription="分享" />
+                <!-- 收藏按钮 (Favorite Button) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFavorite"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    app:icon="@drawable/ic_favorite_border"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="20dp"
+                    app:iconTint="@color/accent_orange"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    app:strokeColor="@color/accent_orange"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="24dp"
+                    android:contentDescription="收藏"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp" />
+
+                <!-- 分享按钮 (Share Button) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnShare"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:icon="@drawable/ic_share"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="20dp"
+                    app:iconTint="@android:color/white"
+                    style="@style/Widget.Material3.Button"
+                    android:backgroundTint="@color/secondary_green"
+                    app:cornerRadius="24dp"
+                    android:contentDescription="分享"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

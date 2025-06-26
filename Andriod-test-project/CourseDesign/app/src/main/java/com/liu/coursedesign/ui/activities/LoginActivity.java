@@ -5,182 +5,256 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.textfield.TextInputEditText;
 
-import com.liu.coursedesign.Dao.UserDao;
-import com.liu.coursedesign.R;
-import com.liu.coursedesign.MainActivity;
-import com.liu.coursedesign.database.AppDatabase;
-import com.liu.coursedesign.model.User;
+// 导入必要的类 (Import Necessary Classes)
+import com.liu.coursedesign.Dao.UserRoles;
 import com.liu.coursedesign.util.SessionManager;
+import com.liu.coursedesign.database.AppDatabase;
+import com.liu.coursedesign.Dao.UserDao;
+import com.liu.coursedesign.model.User;
+import com.liu.coursedesign.R;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+/**
+ * 登录页面Activity
+ * 对应布局文件: activity_login.xml
+ */
 public class LoginActivity extends AppCompatActivity {
     
-    // UI 组件声明
-    private EditText editTextUsername;  // 用户名输入框
-    private EditText editTextPassword;  // 密码输入框
-    private Button buttonLogin;         // 登录按钮
-    private Button buttonRegister;      // 注册按钮
+    // 声明UI组件变量
+    private TextInputEditText etUsername, etPassword;
+    private Button btnLogin;
+    private TextView tvRegister;
 
-    // 会话管理器，记录登录状态和用户信息
+    private ExecutorService executorService;
+    private UserDao userDao;
     private SessionManager sessionManager;
 
-    //计数器
+    // 登录失败计数器 (Login Failure Counter)
     private static int warningCount = 0;
-
+    // 是否有管理员账号
+    private static boolean isExistAdmin = false;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login); // 设置布局文件
-
-        // 初始化会话管理器
-        sessionManager = new SessionManager(this);
-        // 检查是否已登录，如果已登录则跳转到主界面
-        if (sessionManager.isLoggedIn()){
-            goToMainActivityWithSession(); // 使用会话信息跳转到主界面
-            return;
-        }
+        setContentView(R.layout.activity_login); // 绑定XML布局文件
         
-        // 初始化 UI 组件
+        // 初始化组件
         initViews();
-        
-        // 设置点击事件
+        initBusinessLogic();
         setupClickListeners();
+
+        //检查管理员账号是否存在
+        checkAdminExist();
+
+        // 检查是否已经登录
+        checkLoginStatus();
     }
     
     /**
-     * 初始化视图组件
-     * findViewById() = 通过ID找到视图组件
+     * 初始化UI组件
+     * 通过findViewById找到XML中定义的组件
      */
     private void initViews() {
-        editTextUsername = findViewById(R.id.editTextUsername);
-        editTextPassword = findViewById(R.id.editTextPassword);
-        buttonLogin = findViewById(R.id.buttonLogin);
-        buttonRegister = findViewById(R.id.buttonRegister);
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        tvRegister = findViewById(R.id.tvRegister);
     }
     
     /**
-     * 设置点击监听器
-     * OnClickListener = 点击监听器（当用户点击时执行的代码）
+     * 初始化业务逻辑组件
+     */
+    private void initBusinessLogic() {
+        sessionManager = new SessionManager(this);
+
+        // 业务逻辑组件
+        AppDatabase db = AppDatabase.getDatabase(this);
+        userDao = db.userDao();
+
+        executorService = Executors.newFixedThreadPool(1);
+    }
+    
+    /**
+     * 设置点击事件监听器
      */
     private void setupClickListeners() {
         // 登录按钮点击事件
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handleLogin(); // 处理登录逻辑
+                performLogin();
             }
         });
         
-        
-        buttonRegister.setOnClickListener(new View.OnClickListener(){
+        // 注册链接点击事件
+        tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                goToRegister(); // 跳转到注册页面
+            public void onClick(View v) {
+                goToRegister();
             }
         });
     }
-    
+
     /**
-     * 处理登录逻辑（暂时简化）
+     * 检查登录状态
      */
-    private void handleLogin() {
-        String username = editTextUsername.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
-        
+    private void checkLoginStatus() {
+        if (sessionManager.isLoggedIn()) {
+            // 已经登录，直接跳转到主页面 (Already logged in, navigate to main page)
+            goToMainActivity();
+        }
+    }
+
+    /**
+     * 检查管理员账号是否存在，没有则创建默认管理员账号
+     */
+    private void checkAdminExist(){
+        executorService.execute(() -> {
+            List<User> users = userDao.getAll();
+            for (User u : users) {
+                if (UserRoles.ADMINISTRATOR.equals(u.role)) {
+                    isExistAdmin = true;
+                    return;
+                }
+            }
+            if (!isExistAdmin) {
+                long ok = userDao.insertAll(new User("admin", "admin123",UserRoles.ADMINISTRATOR));
+                if (ok > 0) {
+                    Log.d("LoginActivity", "未检测到admin账号，已创建默认管理员账号\n账号admin,密码admin123");
+                } else {
+                    Log.e("LoginActivity", "未检测到admin账号，但无法正常创建默认管理员账户");
+                }
+                long ok2 = userDao.insertAll(new User("administrator","admin123",UserRoles.ADMINISTRATOR));
+                if (ok2 > 0) {
+                    Log.d("LoginActivity", "未检测到admin账号，已创建2号默认管理员账号\n账号amdinistrator,密码admin123");
+                } else {
+                    Log.e("LoginActivity", "未检测到admin账号，但无法正常创建2号默认管理员账户");
+                }
+            }
+        });
+    }
+
+    /**
+     * 执行登录操作
+     */
+    private void performLogin() {
+        // 获取用户输入
+        String username = etUsername.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
         
         // 输入验证
-        if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "请输入用户名和密码", Toast.LENGTH_SHORT).show();
-            return;
+        if (!validateLoginInput(username, password)) {
+            return; // 验证失败直接返回 (Return if validation fails)
         }
-
-        new Thread(() -> {
-            try{
-                // 通过获取数据库实例拿到userDao
-                AppDatabase db = AppDatabase.getDatabase(this);
-                UserDao userDao = db.userDao();
-                
-                // 用userDao检查用户名和密码是否匹配，现在是明文密码匹配和内存判定三次warningCount版
-                // TODO: 需要加密密码再存储和验证
+        
+        executorService.execute(() -> {
+            try {
+                // 检查用户名是否存在 (Check if username exists)
                 int usernameExists = userDao.checkUsernameExists(username);
-                User againuser = userDao.login(username, password);
-                Log.d("LoginActivity","UsernamExists:"+usernameExists+"\nagaginuser=:"+againuser);
-//                boolean passwardTure = false;
-//                if (user!=null && againuser!=null) passwardTure = (user.equals(againuser));//6.23这个equals引出判断id==0的瞬态对象, 11:59要特判没有找到的情况
-                // 其实，有没有可能，当againuser不为NULL即代表username存在且密码正确，所以肯定能进入正常登录，所以不用重写equals都行
-                // 虽然目前来说是等价的
-                if (usernameExists >0 && againuser!=null){
-                    // 存储用户会话信息
-                    sessionManager.saveUserSession(againuser.id, againuser.username, againuser.role);
-
-                    // 存在用户且密码匹配
-                    runOnUiThread(()->{
-                        Toast.makeText(this, "登陆成功!", Toast.LENGTH_SHORT).show();
-                        goToMainActivityWithSession(); // 跳转到主界面
-                    });
-                    warningCount = 0; // 重置警告计数
                     
-                }else if(usernameExists == 0){
-                    runOnUiThread(() -> {
-                        Toast.makeText(this, "用户名不存在，请注册后使用", Toast.LENGTH_SHORT).show();
-                    });
-                }
-                else if (warningCount < 3){
-                    // 账号或密码不匹配
-                    warningCount++;
-                    runOnUiThread(() -> {
-                        Toast.makeText(this, "用户名或密码错误(已尝试"+warningCount+"次", Toast.LENGTH_SHORT).show();
-                    });
-                }else{
-                    //TODO:需要将warningCount放入数据库存储，还要加上倒计时功能
-                    runOnUiThread(() -> {
-                        Toast.makeText(this, "输出错误超过3次，账号已锁定，请30s后再试！", Toast.LENGTH_SHORT).show();
-                    });
-                }
-
-            }catch (Exception e){
-                Log.e("LoginActivity", "登录失败", e);
+                // 尝试登录验证 (Attempt login verification)
+                User user = userDao.login(username, password);
+                
+                // 记录调试信息 (Log debug information)
+                Log.d("LoginActivity", "Username exists: " + usernameExists +
+                                    ", User found: " + (user != null));
+                
+                // 回到主线程更新UI (Return to main thread to update UI)
+                runOnUiThread(() -> {
+                    handleLoginResult(usernameExists, user, username);
+                });
+            } catch (Exception e) {
+                Log.e("LoginActivity", "登录过程中发生错误", e);
                 runOnUiThread(() -> {
                     Toast.makeText(this, "登录失败，请稍后再试", Toast.LENGTH_SHORT).show();
                 });
             }
-        }).start();
-        
+        });
     }
-    
+
+    /**
+     * 验证登录输入
+     * Validate Login Input
+     * 
+     * @param username 用户名 (Username)
+     * @param password 密码 (Password)
+     * @return 验证是否通过 (Whether validation passes)
+     */
+    private boolean validateLoginInput(String username, String password) {
+        // 检查用户名 (Check Username)
+        if (username.isEmpty()) {
+            etUsername.setError("请输入用户名");
+            etUsername.requestFocus(); // Request Focus = 请求焦点，光标定位到此输入框
+            return false;
+        }
+        
+        // 检查密码 (Check Password)
+        if (password.isEmpty()) {
+            etPassword.setError("请输入密码");
+            etPassword.requestFocus();
+            return false;
+        }
+        
+        return true;
+    }
+
+    private void handleLoginResult(int usernameExists, User user, String username) {
+        if (usernameExists > 0 && user != null) {
+            // 登录成功 (Login Success)
+            warningCount = 0; // 重置警告计数 (Reset Warning Counter)
+            
+            // 保存用户会话信息 (Save User Session Information)
+            sessionManager.saveUserSession(user.getId(), user.getUsername(), user.getRole());
+            
+            Toast.makeText(this, "登录成功！", Toast.LENGTH_SHORT).show();
+            goToMainActivity(); // 跳转到主界面 (Navigate to Main Activity)
+            
+        } else if (usernameExists == 0) {
+            // 用户名不存在 (Username does not exist)
+            Toast.makeText(this, "用户名不存在，请注册后使用", Toast.LENGTH_SHORT).show();
+            
+        } else if (warningCount < 3) {
+            // 密码错误，但未达到锁定次数 (Password incorrect, but not reached lock limit)
+            warningCount++;
+            Toast.makeText(this, "用户名或密码错误 (已尝试 " + warningCount + " 次)", 
+                         Toast.LENGTH_SHORT).show();
+            
+        } else {
+            // 超过3次错误，账户锁定 (Over 3 errors, account locked)
+            // TODO: 需要将warningCount存入数据库，并添加倒计时功能
+            // TODO: Need to store warningCount in database and add countdown function
+            Toast.makeText(this, "输入错误超过3次，账号已锁定，请30秒后再试！", 
+                         Toast.LENGTH_LONG).show();
+        }
+    }
+
     /**
      * 跳转到主界面
      */
-    private void goToMainActivityWithSession() {
-        try{
-            Intent intent = new Intent(this, MainActivity.class);// 创建意图对象，指定目标Activity
-            //加入用户信息到意图中作为extra额外数据,用SeessionManager中存的用户信息
-            SessionManager.UserSessionInfo sessionInfo = sessionManager.getUserSessionInfo();
-            if (sessionInfo == null) {
-                intent.putExtra("username", sessionInfo.username);
-                intent.putExtra("role", sessionInfo.role); // 后续判断展示页面
-                intent.putExtra("id", sessionInfo.id); // 用户ID，可能有用
-            }
-            startActivity(intent);  //通过意图启动目标Activity
-            finish(); // 关闭登录页面
-        }catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, "跳转失败，请稍后再试", Toast.LENGTH_SHORT).show();
-        }
-        
+    private void goToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        // 设置Intent标志，清除任务栈 (Set Intent flags to clear task stack)
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish(); // 结束当前Activity (Finish current Activity)
     }
-    
+
     /**
      * 跳转到注册界面
      */
     private void goToRegister() {
-        // Toast.makeText(this, "注册功能即将实现", Toast.LENGTH_SHORT).show();
-        // TODO: 后面创建注册Activity后取消注释
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
+    
 }

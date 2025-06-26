@@ -55,4 +55,53 @@ public class Knowledge {
                 '}';
     }
 
+    public int getId(){
+        return id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public String getImagePath() {
+        return imagePath;
+    }
+    public String getCategory() {
+        return category;
+    }
+    public String getCreateTime() {
+        return createTime;
+    }
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

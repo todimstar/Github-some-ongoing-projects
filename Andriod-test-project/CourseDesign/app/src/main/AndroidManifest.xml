@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- ✅ 图片相关权限 - Image Related Permissions -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" 
+                    android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- ✅ Android 11+ 需要的权限 - Required for Android 11+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -25,12 +33,33 @@
         
         <activity
             android:name=".ui.activities.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" /><!-- 强制竖屏模式 -->
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="false" /><!-- 表示该组件只能被同一应用程序内的其他组件访问，外部应用无法直接访问 -->
 
+        <!-- 知识浏览页面 -->
+        <activity
+            android:name=".ui.activities.KnowledgeBrowserActivity"
+            android:exported="false" />
+
+        <!-- 管理员管理页面 -->
+        <activity
+            android:name=".ui.activities.AdminManageActivity"
+            android:exported="false" />
+
+        <!-- 编辑知识页面 -->
+        <activity
+            android:name=".ui.activities.EditKnowledgeActivity"
+            android:exported="false" />
+
+        <!-- 设置页面 -->
+        <activity
+            android:name=".ui.activities.SettingsActivity"
+            android:exported="false" />
+        
     </application>
 
 </manifest>

@@ -26,6 +26,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    // ✅ 添加：ViewBinding支持 (Enable ViewBinding Support)
+    // ViewBinding = View (视图) + Binding (绑定) = 视图绑定
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -41,9 +47,22 @@ dependencies {
     def room_version = "2.7.1"
 
     implementation "androidx.room:room-runtime:$room_version"
-
-    // If this project only uses Java source, use the Java annotationProcessor
-    // No additional plugins are necessary
     annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // ✅ Glide图片加载库 (Glide Image Loading Library)
+    // Glide = 滑动，寓意图片加载流畅如丝
+    // 使用最新稳定版本，确保兼容性
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    
+    // ✅ 图片选择器库 (Image Picker Library)
+    // 使用最新版本，修复已知问题
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+    
+    // ✅ 权限处理库 (Permission Handling Library)
+    // Permission = 权限，Dispatcher = 分发器
+    implementation 'com.github.permissions-dispatcher:permissionsdispatcher:4.9.2'
+    annotationProcessor 'com.github.permissions-dispatcher:permissionsdispatcher-processor:4.9.2'
 
 }

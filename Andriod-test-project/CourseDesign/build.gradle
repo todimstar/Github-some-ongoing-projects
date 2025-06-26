@@ -2,3 +2,9 @@
 plugins {
 alias(libs.plugins.android.application) apply false
 }
+
+
+// ✅ 清理任务配置 (Clean Task Configuration)
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}
