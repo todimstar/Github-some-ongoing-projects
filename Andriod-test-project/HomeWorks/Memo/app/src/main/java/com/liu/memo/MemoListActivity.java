@@ -1,4 +1,4 @@
-package com.example.memoapp;
+package com.liu.memo;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,11 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class MemoListActivity extends AppCompatActivity {
 

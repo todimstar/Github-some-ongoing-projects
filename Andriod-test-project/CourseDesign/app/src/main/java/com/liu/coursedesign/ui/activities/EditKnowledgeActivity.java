@@ -274,8 +274,8 @@ public class EditKnowledgeActivity extends AppCompatActivity {
             if (imageFile.exists()) {
                 // ✅ 使用Glide的现代化配置 (Modern Glide Configuration)
                 RequestOptions options = new RequestOptions()
-                    .placeholder(R.drawable.image_placeholder)     // 加载中显示
-                    .error(R.drawable.image_placeholder)           // 加载失败显示
+                    .placeholder(R.drawable.ic_refresh)     // 加载中显示
+                    .error(R.drawable.ic_timer)           // 加载失败显示
                     .centerCrop()                                  // 居中裁剪
                     .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC); // 自动缓存策略
                 
@@ -285,16 +285,16 @@ public class EditKnowledgeActivity extends AppCompatActivity {
                     .into(ivPreview);               // 显示到ImageView
                 
                 Log.d("EditKnowledge", "Glide加载图片成功: " + imagePath);
-                
+                // ivPreview.setImageResource(R.drawable.ic_refresh);
             } else {
                 // ✅ 文件不存在时显示占位符
-                ivPreview.setImageResource(R.drawable.image_placeholder);
+                ivPreview.setImageResource(R.drawable.ic_timer);
                 Log.w("EditKnowledge", "图片文件不存在: " + imagePath);
             }
             
         } catch (Exception e) {
             Log.e("EditKnowledge", "Glide加载图片失败", e);
-            ivPreview.setImageResource(R.drawable.image_placeholder);
+            ivPreview.setImageResource(R.drawable.ic_timer);
             
             // ✅ 降级到原生方法 (Fallback to Native Method)
             Toast.makeText(this, "Glide加载失败，使用备用方法", Toast.LENGTH_SHORT).show();

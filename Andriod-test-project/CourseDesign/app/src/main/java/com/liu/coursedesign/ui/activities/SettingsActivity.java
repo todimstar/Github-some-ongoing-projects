@@ -125,9 +125,6 @@ public class SettingsActivity extends AppCompatActivity {
         if (showChangePassword) {
             // 让当前密码输入框获取焦点 
             etCurrentPassword.requestFocus();
-            
-            // 可选：滚动到修改密码区域 
-            // 如果页面很长，可以添加滚动逻辑
         }
     }
     
@@ -158,7 +155,9 @@ public class SettingsActivity extends AppCompatActivity {
             if (user == null) {return;}// 此时就是UI线程暂停了，我们这个线程也得停下
             // 亮点:拦截对默认管理员账号的修改
             if (user.username.equals("admin")){
-                Toast.makeText(this,"默认管理员账号密码不可改变，如需测试请登录2号默认管理员账号修改",Toast.LENGTH_LONG).show();
+                runOnUiThread(() -> {
+                    Toast.makeText(this,"默认管理员账号密码不可改变，如需测试请登录2号默认管理员账号修改",Toast.LENGTH_LONG).show();
+                });
                 return;
             }
             // 更新密码

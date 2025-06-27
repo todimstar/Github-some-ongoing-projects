@@ -9,9 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.liu.coursedesign.R;
 import com.liu.coursedesign.model.Knowledge;
 
+import java.io.File;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -81,8 +84,22 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
             tvDescription.setText(knowledge.getDescription());
             tvDate.setText(knowledge.getUpdateTime());
 
-            // 设置缩略图
-            ivThumbnail.setImageResource(R.drawable.image_placeholder);
+            // 获取图片路径
+            String imagePath = knowledge.getImagePath();
+            
+            // 使用Glide加载图片
+            if (imagePath != null && !imagePath.isEmpty()) {
+                Glide.with(itemView.getContext())
+                    .load(imagePath)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)  // 禁用磁盘缓存
+                    .skipMemoryCache(true)  // 跳过内存缓存
+                    .placeholder(R.drawable.ic_refresh)  // 加载中显示占位图
+                    .error(R.drawable.ic_timer)  // 加载失败显示占位图
+                    .into(ivThumbnail);
+            } else {
+                // 路径为空，显示占位图
+                ivThumbnail.setImageResource(R.drawable.image_placeholder);
+            }
 
             // 设置点击事件
             btnEdit.setOnClickListener(v -> {

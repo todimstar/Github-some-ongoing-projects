@@ -38,7 +38,7 @@
         android:layout_marginBottom="16dp"
         app:boxStrokeColor="@color/primary_color"
         app:hintTextColor="@color/primary_color">
-
+        <!-- 亮点：谷歌推荐的现代输入框 -->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"

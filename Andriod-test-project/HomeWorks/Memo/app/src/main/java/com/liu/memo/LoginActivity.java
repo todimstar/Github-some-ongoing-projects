@@ -1,4 +1,4 @@
-package com.example.memoapp;
+package com.liu.memo;
 
 import android.content.Intent;
 import android.os.Bundle;

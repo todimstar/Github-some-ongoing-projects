@@ -1,4 +1,4 @@
-package com.example.memoapp;
+package com.liu.memo;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -76,28 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count > 0;
     }
 
-    // 验证用户登录
-    public User checkUserCredentials(String username, String password) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {COLUMN_USER_ID, COLUMN_USERNAME, COLUMN_PASSWORD /* 通常不直接查询密码字段用于验证 */};
-        String selection = COLUMN_USERNAME + " = ?";
-        String[] selectionArgs = {username};
-        android.database.Cursor cursor = db.query(TABLE_USERS, columns, selection, selectionArgs, null, null, null);
-        User user = null;
-        if (cursor.moveToFirst()) {
-            // 在实际应用中，这里应该比较哈希后的密码
-            String storedPassword = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD));
-            if (password.equals(storedPassword)) { // 简单比较，实际应使用安全比较方式
-                user = new User();
-                user.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_ID)));
-                user.setUsername(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USERNAME)));
-                // user.setPassword(storedPassword); // 通常不将密码设置回User对象传递
-            }
-        }
-        cursor.close();
-        // db.close(); // Reading database, no need to close here
-        return user;
-    }
+
 
     // 验证用户登录 (此版本检查密码，之前的 checkUserCredentials 仅检查用户名是否存在并返回User对象，但密码比较逻辑在方法内)
     // 为了清晰，可以将上面的 checkUserCredentials(String username, String password) 方法保留用于登录验证

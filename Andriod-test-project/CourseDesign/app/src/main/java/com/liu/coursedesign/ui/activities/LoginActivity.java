@@ -120,11 +120,13 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void checkAdminExist(){
         executorService.execute(() -> {
-            List<User> users = userDao.getAll();
-            for (User u : users) {
-                if (UserRoles.ADMINISTRATOR.equals(u.role)) {
-                    isExistAdmin = true;
-                    return;
+            if (!isExistAdmin){
+                List<User> users = userDao.getAll();
+                for (User u : users) {
+                    if (UserRoles.ADMINISTRATOR.equals(u.role)) {
+                        isExistAdmin = true;
+                        return;
+                    }
                 }
             }
             if (!isExistAdmin) {

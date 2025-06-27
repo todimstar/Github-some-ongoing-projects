@@ -1,4 +1,4 @@
-package com.example.memoapp;
+package com.liu.memo;
 
 public class Memo {
     private int id;

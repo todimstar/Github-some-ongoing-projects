@@ -3,6 +3,7 @@ package com.liu.coursedesign.ui.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 // 添加缺失的导入
+import com.liu.coursedesign.util.DataPrePopulator;
 import com.liu.coursedesign.util.SessionManager;
 import com.liu.coursedesign.database.AppDatabase;
 import com.liu.coursedesign.Dao.KnowledgeDao;
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private KnowledgeDao knowledgeDao;
     private ExecutorService executorService;
+
+    // 是否第一次加载数据
+    private static boolean isFirstLoad = true; // 用于判断是否进行数据预填充
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +134,19 @@ public class MainActivity extends AppCompatActivity {
         knowledgeDao = db.knowledgeDao();
 
         executorService = Executors.newSingleThreadExecutor();
+        firstLoadDataPre();
+    }
+
+    private void firstLoadDataPre(){
+        if (isFirstLoad){
+            // 初始化数据预填充器 
+            DataPrePopulator dataPrePopulator = new DataPrePopulator(this, knowledgeDao);
+            
+            // 检查并填充初始数据 
+            dataPrePopulator.checkAndPopulateData();
+            isFirstLoad = false;
+            Log.d("MainActivity","首次加载已预填数据");
+        }
     }
 
 

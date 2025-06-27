@@ -1,6 +1,6 @@
-package com.example.memoapp;
+package com.liu.memo;
 
-import com.example.memoapp.R;
+
 
 import android.content.ContentValues;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.example.memoapp;
+package com.liu.memo;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.liu.memo.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.google.android.material.chip.Chip;
 import com.liu.coursedesign.R;
 import com.liu.coursedesign.model.Knowledge;
@@ -87,13 +89,13 @@ public class KnowledgeAdapter extends RecyclerView.Adapter<KnowledgeAdapter.Know
             tvUpdateTime.setText(knowledge.getUpdateTime());
             chipCategory.setText(knowledge.getCategory());
 
-            // 加载图片（这里使用占位符，实际项目中使用图片加载库如Glide）
+            // 加载图片
             if (knowledge.getImagePath() != null && !knowledge.getImagePath().isEmpty()) {
                 // 使用Glide或Picasso加载图片
-                // Glide.with(itemView.getContext()).load(knowledge.getImagePath()).into(ivKnowledgeImage);
-                ivKnowledgeImage.setImageResource(R.drawable.image_placeholder_modern);
+                Glide.with(itemView.getContext()).load(knowledge.getImagePath()).into(ivKnowledgeImage);
+                // ivKnowledgeImage.setImageResource(R.drawable.image_placeholder_modern);
             } else {
-                ivKnowledgeImage.setImageResource(R.drawable.image_placeholder_modern);
+                ivKnowledgeImage.setImageResource(R.drawable.image_placeholder_modern);//失败加载该图
             }
 
             // 设置点击事件

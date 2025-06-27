@@ -27,9 +27,23 @@ public interface KnowledgeDao {
     @Query("SELECT * FROM knowledges")
     List<Knowledge> getAllKnowledge();
 
-    // 根据分类查询知识,分栏用
+    // 根据分类查询知识,分栏展示用
     @Query("SELECT * FROM knowledges WHERE category = :category")
     List<Knowledge> getKnowledgeByCategory(String category);
+    /**
+     * 根据分类获取数量
+     * Get Count by Category
+     * 
+     * @param category 分类名称 - Category name
+     * @return 该分类的知识数量 - Number of knowledge in this category
+     */
+    @Query("SELECT COUNT(*) FROM knowledges WHERE category = :category")
+    int getCountByCategory(String category);
+
+    // 获取所有分类的方法，分类栏自身用
+    @Query("SELECT DISTINCT category FROM knowledges WHERE category IS NOT NULL AND category != ''")
+    List<String> getAllCategories();
+
 
     // 根据标题查询知识,可能用于各详细知识页面
     @Query("SELECT * FROM knowledges WHERE title = :title")
@@ -82,16 +96,7 @@ public interface KnowledgeDao {
     @Query("SELECT COUNT(*) FROM knowledges")
     int getKnowledgeCount();
     
-    /**
-     * 根据分类获取数量
-     * Get Count by Category
-     * 
-     * @param category 分类名称 - Category name
-     * @return 该分类的知识数量 - Number of knowledge in this category
-     */
-    @Query("SELECT COUNT(*) FROM knowledges WHERE category = :category")
-    int getCountByCategory(String category);
-    
+        
     /**
      * 获取最新添加的知识
      * Get Latest Added Knowledge
